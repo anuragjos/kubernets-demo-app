@@ -1,13 +1,13 @@
-FROM centos:latest
-RUN cd /etc/yum.repos.d/
-RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
-RUN dnf -y install httpd
+FROM ubuntu 
+RUN apt update 
+RUN apt install –y apache2 
+RUN apt install –y apache2-utils 
+RUN apt clean
+RUN apt-get install unzip -y
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page286/consult.zip /var/www/html/
-WORKDIR /var/www/html/
+WORKDIR /var/www/html/ 
 RUN unzip consult.zip
 RUN cp -rvf consult.zip
 RUN rm -rf consult consult.zip
-EXPOSE 80 22
-CMD ["-D", "FOREGROUND"]
-ENTRYPOINT ["/usr/sbin/httpd"]
+EXPOSE 80
+CMD [“apache2ctl”, “-D”, “FOREGROUND”]

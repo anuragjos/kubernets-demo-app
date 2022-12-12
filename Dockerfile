@@ -7,6 +7,6 @@ WORKDIR /var/www/html/
 RUN unzip consult.zip
 RUN cp -rvf consult.zip
 RUN rm -rf consult consult.zip
-EXPOSE 80
+EXPOSE 80 22
 CMD ["-D", "FOREGROUND"]
 ENTRYPOINT ["/usr/sbin/httpd"]

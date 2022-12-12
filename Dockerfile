@@ -6,8 +6,6 @@ RUN yum -y install java
 CMD /bin/bash
 RUN dnf -y install httpd
 RUN yum install gzip -y
-RUN zip/
-RUN unzip/
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page286/consult.zip /var/www/html/
 WORKDIR /var/www/html/
 RUN unzip consult.zip
